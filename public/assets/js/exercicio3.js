@@ -494,6 +494,7 @@ function Player(maze, c, _cellsize, onComplete, sprite = null) {
         if (e.key === "ArrowDown" || e.key === "ArrowUp" || e.key === "ArrowLeft" || e.key === "ArrowRight") {
             stepsPressed++;
         }
+        
         console.log(stepsPressed);
 
         var instruction = mazeInstruction[mazeInstructionIndex];
