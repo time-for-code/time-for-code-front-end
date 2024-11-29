@@ -18,8 +18,8 @@ O Time for Code está sendo desenvolvido para crianças e adolescentes que estã
 * **Landing Page:** Página inicial que apresenta o projeto, explica seus objetivos e fornece mais informações sobre o conteúdo oferecido.
 
 ## Páginas do sistema
-<img src="/docs/img01.png" alt="Landing page" width="600">
-<img src="/docs/img02.png" alt="Exercício 04" width="600">
+<img src="/docs/img01.png" alt="Landing page" width="650">
+<img src="/docs/img02.png" alt="Exercício 04" width="650">
 
 
 ## Tecnologias utilizadas no projeto
