@@ -3,7 +3,7 @@ let tentativas = 0;
 let tempoInicial = new Date();
 
 // Função para verificar o resultado e mostrar a opção de "Finalizar Atividade"
-function verificarResultado() {
+export function verificarResultado() {
     tentativas++;
 
     // Obter as cores dos slots
@@ -25,7 +25,7 @@ function verificarResultado() {
 }
 
 // Função para exibir o botão de "Finalizar Atividade"
-function mostrarBotaoFinalizar() {
+export function mostrarBotaoFinalizar() {
     const finalizarBtn = `
         <button class="btn" onclick="voltarParaHome()">Finalizar Atividade</button>
     `;
@@ -33,12 +33,12 @@ function mostrarBotaoFinalizar() {
 }
 
 // Função para redirecionar à home
-function voltarParaHome() {
+export function voltarParaHome() {
     window.location.href = "exercicio2.html";
 }
 
 // Função para exibir as estatísticas finais
-function exibirEstatisticas() {
+export function exibirEstatisticas() {
     const tempoTotal = (new Date() - tempoInicial) / 1000; // Calcula o tempo em segundos
     const estatisticasHTML = `
         <div class="estatisticas">
@@ -52,7 +52,7 @@ function exibirEstatisticas() {
 }
 
 // Função para reiniciar o exercício
-function reiniciarExercicio() {
+export function reiniciarExercicio() {
     tentativas = 0;
     pontuacao = 0;
     document.getElementById('resultado').innerHTML = '';
@@ -71,7 +71,7 @@ function reiniciarExercicio() {
 }
 
 // Função para embaralhar as cores
-function embaralharCores() {
+export function embaralharCores() {
     const cores = document.querySelectorAll('.color');
     const colorArray = Array.from(cores);
     const shuffledColors = colorArray.sort(() => Math.random() - 0.5);
@@ -120,7 +120,7 @@ window.onload = function () {
     embaralharCores();
 };
 
-function toggleVisablity(id) {
+export function toggleVisablity(id) {
     if (document.getElementById(id).style.visibility == "visible") {
         document.getElementById(id).style.visibility = "hidden";
     } else {

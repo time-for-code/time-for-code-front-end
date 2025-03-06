@@ -38,7 +38,7 @@ function displayVictoryMess(moves) {
   toggleVisablity("Message-Container");
 }
 
-function toggleVisablity(id) {
+export function toggleVisablity(id) {
   if (document.getElementById(id).style.visibility == "visible") {
     document.getElementById(id).style.visibility = "hidden";
   } else {
@@ -560,7 +560,7 @@ window.onresize = function () {
   }
 };
 
-function makeMaze() {
+export function makeMaze() {
   if (player != undefined) {
     player.unbindKeyDown();
     player = null;

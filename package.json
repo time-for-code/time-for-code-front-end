@@ -1,0 +1,44 @@
+{
+  "name": "time-for-code-front-end",
+  "version": "1.0.0",
+  "description": "![Logo](https://avatars.githubusercontent.com/u/182120128?s=200&v=4)",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "",
+    "lint": "eslint",
+    "dev": "vite"
+  },
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/time-for-code/time-for-code-front-end"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/time-for-code/time-for-code-front-end/issues"
+  },
+  "homepage": "https://github.com/time-for-code/time-for-code-front-end#readme",
+  "dependencies": {
+    "@tanstack/react-query": "^5.64.1",
+    "@tanstack/react-router": "^1.97.1",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@tanstack/eslint-plugin-query": "^5.62.16",
+    "@tanstack/router-plugin": "^1.97.1",
+    "@testing-library/react": "^16.2.0",
+    "@vitejs/plugin-react": "^4.3.4",
+    "babel-plugin-react-compiler": "^19.0.0-beta-e552027-20250112",
+    "eslint": "^9.18.0",
+    "eslint-plugin-react": "^7.37.4",
+    "globals": "^15.14.0",
+    "happy-dom": "^16.6.0",
+    "playwright": "^1.49.1",
+    "vite": "^6.0.7"
+  }
+}

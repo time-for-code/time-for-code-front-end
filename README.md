@@ -21,11 +21,11 @@ O Time for Code está sendo desenvolvido para crianças e adolescentes que estã
 <img src="/docs/img01.png" alt="Landing page" width="650">
 <img src="/docs/img02.png" alt="Exercício 04" width="650">
 
-
 ## Tecnologias utilizadas no projeto
-![TechStack](https://skillicons.dev/icons?i=html,css,js,nodejs,npm,express,postgres,azure,git,github)
+![TechStack](https://skillicons.dev/icons?i=html,css,js,react,nodejs,npm,express,postgres,azure,git,github)
 + **HTML/CSS:** Para construção da estrutura e design responsivo da plataforma.
 + **JavaScript (JS):** Linguagem de programação utilizada tanto no frontend quanto no backend.
++ **React:** Biblioteca JavaScript para construção de interfaces de usuário.
 + **NodeJS:** Linguagem utilizada para utilizar o JavaScript a nível de servidor e para aplicações backend.
 + **NPM:** NPM ou Node Package Manager é um gerenciador de pacotes padrão para os ambientes NodeJS e JavaScript.
 + **Express:** Framework backend para construção da API e gerenciamento de dados.
