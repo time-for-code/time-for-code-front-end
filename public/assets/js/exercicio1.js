@@ -12,7 +12,6 @@ export function verificarResultado() {
 
     // Verificar se a sequência está correta
     const acertou = JSON.stringify(slots) === JSON.stringify(coresCorretas);
-
     const resultadoDiv = document.getElementById('resultado');
     if (acertou) {
         pontuacao += 10; // Pontuação ao acertar
@@ -33,7 +32,7 @@ export function mostrarBotaoFinalizar() {
 }
 
 // Função para redirecionar à home
-export function voltarParaHome() {
+export function proximoExercicio() {
     window.location.href = "exercicio2.html";
 }
 
@@ -84,25 +83,8 @@ export function embaralharCores() {
     });
 }
 
-// Função de arrastar e soltar (drag and drop)
-document.querySelectorAll('.color').forEach(color => {
-    color.addEventListener('dragstart', dragStart);
-});
-
-document.querySelectorAll('.slot').forEach(slot => {
-    slot.addEventListener('dragover', dragOver);
-    slot.addEventListener('drop', drop);
-});
-
-function dragStart(e) {
-    e.dataTransfer.setData('color', e.target.id);
-}
-
-function dragOver(e) {
-    e.preventDefault();
-}
-
-function drop(e) {
+// Função para definir a cor do slot como a cor arrastada
+export function drop(e) {
     e.preventDefault();
     const colorId = e.dataTransfer.getData('color');
     const colorElement = document.getElementById(colorId);
@@ -115,15 +97,12 @@ function drop(e) {
     colorElement.style.opacity = '0.5'; // Opcional: Diminuir a opacidade para indicar que não pode mais ser usada
 }
 
-// Chamar a função de embaralhar as cores ao carregar a página
-window.onload = function () {
-    embaralharCores();
-};
+// Função para iniciar o arrasto
+export function dragStart(e) {
+    e.dataTransfer.setData('color', e.target.id);
+}
 
-export function toggleVisablity(id) {
-    if (document.getElementById(id).style.visibility == "visible") {
-        document.getElementById(id).style.visibility = "hidden";
-    } else {
-        document.getElementById(id).style.visibility = "visible";
-    }
+// Função para permitir o arrasto sobre um elemento
+export function dragOver(e) {
+    e.preventDefault();
 }

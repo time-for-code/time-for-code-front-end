@@ -19,8 +19,8 @@ import { Route as rootRoute } from './routes/__root'
 const RegisterLazyImport = createFileRoute('/register')()
 const LoginLazyImport = createFileRoute('/login')()
 const HomeLazyImport = createFileRoute('/home')()
-const ExerciseLazyImport = createFileRoute('/exercise')()
 const IndexLazyImport = createFileRoute('/')()
+const ExerciseIdLazyImport = createFileRoute('/exercise/$id')()
 
 // Create/Update Routes
 
@@ -42,17 +42,17 @@ const HomeLazyRoute = HomeLazyImport.update({
   getParentRoute: () => rootRoute,
 } as any).lazy(() => import('./routes/home.lazy').then((d) => d.Route))
 
-const ExerciseLazyRoute = ExerciseLazyImport.update({
-  id: '/exercise',
-  path: '/exercise',
-  getParentRoute: () => rootRoute,
-} as any).lazy(() => import('./routes/exercise.lazy').then((d) => d.Route))
-
 const IndexLazyRoute = IndexLazyImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRoute,
 } as any).lazy(() => import('./routes/index.lazy').then((d) => d.Route))
+
+const ExerciseIdLazyRoute = ExerciseIdLazyImport.update({
+  id: '/exercise/$id',
+  path: '/exercise/$id',
+  getParentRoute: () => rootRoute,
+} as any).lazy(() => import('./routes/exercise/$id.lazy').then((d) => d.Route))
 
 // Populate the FileRoutesByPath interface
 
@@ -63,13 +63,6 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexLazyImport
-      parentRoute: typeof rootRoute
-    }
-    '/exercise': {
-      id: '/exercise'
-      path: '/exercise'
-      fullPath: '/exercise'
-      preLoaderRoute: typeof ExerciseLazyImport
       parentRoute: typeof rootRoute
     }
     '/home': {
@@ -93,6 +86,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof RegisterLazyImport
       parentRoute: typeof rootRoute
     }
+    '/exercise/$id': {
+      id: '/exercise/$id'
+      path: '/exercise/$id'
+      fullPath: '/exercise/$id'
+      preLoaderRoute: typeof ExerciseIdLazyImport
+      parentRoute: typeof rootRoute
+    }
   }
 }
 
@@ -100,52 +100,52 @@ declare module '@tanstack/react-router' {
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexLazyRoute
-  '/exercise': typeof ExerciseLazyRoute
   '/home': typeof HomeLazyRoute
   '/login': typeof LoginLazyRoute
   '/register': typeof RegisterLazyRoute
+  '/exercise/$id': typeof ExerciseIdLazyRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexLazyRoute
-  '/exercise': typeof ExerciseLazyRoute
   '/home': typeof HomeLazyRoute
   '/login': typeof LoginLazyRoute
   '/register': typeof RegisterLazyRoute
+  '/exercise/$id': typeof ExerciseIdLazyRoute
 }
 
 export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexLazyRoute
-  '/exercise': typeof ExerciseLazyRoute
   '/home': typeof HomeLazyRoute
   '/login': typeof LoginLazyRoute
   '/register': typeof RegisterLazyRoute
+  '/exercise/$id': typeof ExerciseIdLazyRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/exercise' | '/home' | '/login' | '/register'
+  fullPaths: '/' | '/home' | '/login' | '/register' | '/exercise/$id'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/exercise' | '/home' | '/login' | '/register'
-  id: '__root__' | '/' | '/exercise' | '/home' | '/login' | '/register'
+  to: '/' | '/home' | '/login' | '/register' | '/exercise/$id'
+  id: '__root__' | '/' | '/home' | '/login' | '/register' | '/exercise/$id'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
   IndexLazyRoute: typeof IndexLazyRoute
-  ExerciseLazyRoute: typeof ExerciseLazyRoute
   HomeLazyRoute: typeof HomeLazyRoute
   LoginLazyRoute: typeof LoginLazyRoute
   RegisterLazyRoute: typeof RegisterLazyRoute
+  ExerciseIdLazyRoute: typeof ExerciseIdLazyRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexLazyRoute: IndexLazyRoute,
-  ExerciseLazyRoute: ExerciseLazyRoute,
   HomeLazyRoute: HomeLazyRoute,
   LoginLazyRoute: LoginLazyRoute,
   RegisterLazyRoute: RegisterLazyRoute,
+  ExerciseIdLazyRoute: ExerciseIdLazyRoute,
 }
 
 export const routeTree = rootRoute
@@ -159,17 +159,14 @@ export const routeTree = rootRoute
       "filePath": "__root.jsx",
       "children": [
         "/",
-        "/exercise",
         "/home",
         "/login",
-        "/register"
+        "/register",
+        "/exercise/$id"
       ]
     },
     "/": {
       "filePath": "index.lazy.jsx"
-    },
-    "/exercise": {
-      "filePath": "exercise.lazy.jsx"
     },
     "/home": {
       "filePath": "home.lazy.jsx"
@@ -179,6 +176,9 @@ export const routeTree = rootRoute
     },
     "/register": {
       "filePath": "register.lazy.jsx"
+    },
+    "/exercise/$id": {
+      "filePath": "exercise/$id.lazy.jsx"
     }
   }
 }

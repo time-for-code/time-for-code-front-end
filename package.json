@@ -25,6 +25,8 @@
   "dependencies": {
     "@tanstack/react-query": "^5.64.1",
     "@tanstack/react-router": "^1.97.1",
+    "jquery": "^3.7.1",
+    "jquery-touchswipe": "^1.6.19",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },

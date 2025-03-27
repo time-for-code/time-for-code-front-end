@@ -1,3 +1,8 @@
+import { mazeCanvas, virtCanvas, context, imgData, ctx } from '../../../src/pages/exercicio2';
+import $ from 'jquery';
+import 'jquery-touchswipe/jquery.touchSwipe.min.js';
+import { toggleVisablity } from '../../../src/utils/utilidades';
+
 function rand(max) {
   return Math.floor(Math.random() * max);
 }
@@ -10,14 +15,11 @@ function shuffle(a) {
   return a;
 }
 
-function changeBrightness(factor, sprite) {
-  var virtCanvas = document.createElement("canvas");
+export function changeBrightness(factor, sprite) {
   virtCanvas.width = 500;
   virtCanvas.height = 500;
-  var context = virtCanvas.getContext("2d");
-  context.drawImage(sprite, 0, 0, 500, 500);
 
-  var imgData = context.getImageData(0, 0, 500, 500);
+  context.drawImage(sprite, 0, 0, 500, 500);
 
   for (let i = 0; i < imgData.data.length; i += 4) {
     imgData.data[i] = imgData.data[i] * factor;
@@ -29,21 +31,13 @@ function changeBrightness(factor, sprite) {
   var spriteOutput = new Image();
   spriteOutput.src = virtCanvas.toDataURL();
   virtCanvas.remove();
-  
+
   return spriteOutput;
 }
 
 function displayVictoryMess(moves) {
   document.getElementById("moves").innerHTML = "Você se moveu " + moves + " Vezes.";
   toggleVisablity("Message-Container");
-}
-
-export function toggleVisablity(id) {
-  if (document.getElementById(id).style.visibility == "visible") {
-    document.getElementById(id).style.visibility = "hidden";
-  } else {
-    document.getElementById(id).style.visibility = "visible";
-  }
 }
 
 function Maze(Width, Height) {
@@ -87,9 +81,9 @@ function Maze(Width, Height) {
 
   function genMap() {
     mazeMap = new Array(height);
-    for (y = 0; y < height; y++) {
+    for (let y = 0; y < height; y++) {
       mazeMap[y] = new Array(width);
-      for (x = 0; x < width; ++x) {
+      for (let x = 0; x < width; ++x) {
         mazeMap[y][x] = {
           n: false,
           s: false,
@@ -123,26 +117,26 @@ function Maze(Width, Height) {
         numLoops = 0;
       }
       numLoops++;
-      for (index = 0; index < dirs.length; index++) {
+      for (let index = 0; index < dirs.length; index++) {
         var direction = dirs[index];
         var nx = pos.x + modDir[direction].x;
         var ny = pos.y + modDir[direction].y;
 
         if (nx >= 0 && nx < width && ny >= 0 && ny < height) {
-         
+
           if (!mazeMap[nx][ny].visited) {
-           
+
             mazeMap[pos.x][pos.y][direction] = true;
             mazeMap[nx][ny][modDir[direction].o] = true;
 
             mazeMap[nx][ny].priorPos = pos;
-            
+
             pos = {
               x: nx,
               y: ny
             };
             cellsVisited++;
-           
+
             move = true;
             break;
           }
@@ -252,8 +246,8 @@ function DrawMaze(Maze, ctx, cellsize, endSprite = null) {
   }
 
   function drawMap() {
-    for (x = 0; x < map.length; x++) {
-      for (y = 0; y < map[x].length; y++) {
+    for (let x = 0; x < map.length; x++) {
+      for (let y = 0; y < map[x].length; y++) {
         drawCell(x, y, map[x][y]);
       }
     }
@@ -319,22 +313,24 @@ function DrawMaze(Maze, ctx, cellsize, endSprite = null) {
   drawEndMethod();
 }
 
-function Player(maze, c, _cellsize, onComplete, sprite = null) {
+function Player(maze, c, _cellsize, onComplete, sprite) {
   var ctx = c.getContext("2d");
   var drawSprite;
   var moves = 0;
+  var player = this;
+  var map = maze.map();
+  var cellSize = _cellsize;
+  var halfCellSize = cellSize / 2;
   drawSprite = drawSpriteCircle;
+
   if (sprite != null) {
     drawSprite = drawSpriteImg;
   }
-  var player = this;
-  var map = maze.map();
+
   var cellCoords = {
     x: maze.startCoord().x,
     y: maze.startCoord().y
   };
-  var cellSize = _cellsize;
-  var halfCellSize = cellSize / 2;
 
   this.redrawPlayer = function (_cellsize) {
     cellSize = _cellsize;
@@ -447,10 +443,10 @@ function Player(maze, c, _cellsize, onComplete, sprite = null) {
       swipe: function (
         event,
         direction,
-        distance,
-        duration,
-        fingerCount,
-        fingerData
+        // distance,
+        // duration,
+        // fingerCount,
+        // fingerData
       ) {
         console.log(direction);
         switch (direction) {
@@ -472,7 +468,7 @@ function Player(maze, c, _cellsize, onComplete, sprite = null) {
           case "right":
             check({
               keyCode: 39
-            }); 
+            });
             break;
         }
       },
@@ -490,16 +486,12 @@ function Player(maze, c, _cellsize, onComplete, sprite = null) {
   this.bindKeyDown();
 }
 
-var mazeCanvas = document.getElementById("mazeCanvas");
-var ctx = mazeCanvas.getContext("2d");
-var sprite;
-var finishSprite;
-var maze, draw, player;
-var cellSize;
+let genMazeOnce = false;
 
-window.onload = function () {
+export function loadEvents() {
   let viewWidth = $("#view").width();
   let viewHeight = $("#view").height();
+
   if (viewHeight < viewWidth) {
     ctx.canvas.width = viewHeight - viewHeight / 100;
     ctx.canvas.height = viewHeight - viewHeight / 100;
@@ -511,18 +503,17 @@ window.onload = function () {
   var completeOne = false;
   var completeTwo = false;
   var isComplete = () => {
-    if (completeOne === true && completeTwo === true) {
+    if (completeOne === true && completeTwo === true && genMazeOnce === false) {
       console.log("Runs");
+      genMazeOnce = true;
       setTimeout(function () {
         makeMaze();
       }, 500);
     }
   };
-  sprite = new Image();
-  sprite.src =
-    "../public/img/robot.png"
-  new Date().getTime();
-  sprite.setAttribute("crossOrigin", " ");
+  var sprite = new Image();
+  sprite.src = "/img/robot.png"
+  sprite.setAttribute("crossOrigin", "");
   sprite.onload = function () {
     sprite = changeBrightness(1.2, sprite);
     completeOne = true;
@@ -530,19 +521,21 @@ window.onload = function () {
     isComplete();
   };
 
-  finishSprite = new Image();
-  finishSprite.src = "../public/img/home.png"
-    new Date().getTime();
-  finishSprite.setAttribute("crossOrigin", " ");
+  var finishSprite = new Image();
+  finishSprite.src = "/img/home.png";
+  finishSprite.setAttribute("crossOrigin", "");
   finishSprite.onload = function () {
     finishSprite = changeBrightness(1.1, finishSprite);
     completeTwo = true;
     console.log(completeTwo);
     isComplete();
   };
+
+  return { sprite, finishSprite }
 };
 
 window.onresize = function () {
+  var { cellSize, draw, player } = makeMaze();
   let viewWidth = $("#view").width();
   let viewHeight = $("#view").height();
   if (viewHeight < viewWidth) {
@@ -566,12 +559,13 @@ export function makeMaze() {
     player = null;
   }
 
-  cellSize = mazeCanvas.width / 10;
-  maze = new Maze(10, 10);
-  console.log(maze);
-  draw = new DrawMaze(maze, ctx, cellSize, finishSprite);
-  player = new Player(maze, mazeCanvas, cellSize, displayVictoryMess, sprite);
+  var cellSize = mazeCanvas.width / 10;
+  var maze = new Maze(10, 10);
+  var { finishSprite, sprite } = loadEvents()
+  var draw = new DrawMaze(maze, ctx, cellSize, finishSprite);
+  var player = new Player(maze, mazeCanvas, cellSize, displayVictoryMess, sprite);
   if (document.getElementById("mazeContainer").style.opacity < "100") {
     document.getElementById("mazeContainer").style.opacity = "100";
   }
+  return { cellSize, maze, draw, player }
 }

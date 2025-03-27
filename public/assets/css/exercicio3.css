@@ -27,7 +27,6 @@ h1{
     opacity: 0;
     display: inline-block;
     margin: auto;
-    border-radius: 10px;
     left: auto;
     right:auto;
     z-index: 0;
@@ -38,7 +37,6 @@ h1{
     margin: 0;
     display: block;
     border: solid 15px #423453;
-    border-radius: 5%;
     height: 450px;
     background-color: #D6F6DE;
 }

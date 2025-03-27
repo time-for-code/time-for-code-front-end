@@ -5,7 +5,6 @@ body {
     font-family: 'Poppins', sans-serif;
     background-color: #FDF8F4;
     color: #4c4c4c;
-    /* Cor do texto */
 }
 
 .container {
@@ -20,7 +19,7 @@ h2 {
     font-weight: 600;
     color: #DBC4F8;
     /* Cor do título */
-    margin-bottom: 20px;
+    margin: 2rem 0 2rem 0;
 }
 
 p {

@@ -1,26 +1,4 @@
-let puzzle = document.querySelector('.puzzle')
-let cellsAmount = 20
-let puzzleDivs = []
-let draggableDivs = []
-let cells = document.querySelector('.cells')
-let modal = document.querySelector('.modal')
-let modalText = document.querySelector('.modal-text')
-let modalBtn = document.querySelector('.modal-btn')
-let attempt = document.querySelector('.attempt')
-let finalImg = document.querySelector('.final-img')
-let inputFile = document.getElementById('input-file')
-let randomBtn = document.querySelector('.random-btn')
-//   let createElments();
-
-function toggleVisablity(id) {
-    if (document.getElementById(id).style.visibility == "visible") {
-      document.getElementById(id).style.visibility = "hidden";
-    } else {
-      document.getElementById(id).style.visibility = "visible";
-    }
-  }  
-
-function createElments() {
+export function createElments(puzzle, puzzleDivs, draggableDivs, cellsAmount) {
     for (let index = 0; index < cellsAmount; index++) {
         const puzzleDiv = document.createElement('div')
         puzzleDiv.setAttribute('data-index', index)
@@ -57,13 +35,12 @@ function bgPositions() {
         .reduce((positions, item) => [...positions, ...item])
 }
 
-function addDraggableDivs() {
-
+export function addDraggableDivs(draggableDivs, cells) {
     let Positions = bgPositions()
     let shufflePosition = shufflePositions()
 
     draggableDivs.forEach((div, i) => {
-        div.style.backgroundImage = 'url("../public/img/Ativo10.png")'
+        div.style.backgroundImage = 'url("../public/img/grupoMascotes.png")'
         cells.append(div)
         div.style.backgroundPosition = `-${Positions[i][1]}vw -${Positions[i][0]}vw`
         div.style.left = `${shufflePosition[i][0]}vw`
@@ -74,8 +51,7 @@ function addDraggableDivs() {
 let selected = 0
 let points = { correct: 0, wrong: 0 }
 
-function dragDropEvents() {
-
+export function dragDropEvents(draggableDivs, puzzleDivs, modal, cellsAmount, attempt, modalBtn) {
     draggableDivs.forEach((draggableDiv, i) => {
         draggableDiv.addEventListener('dragstart', (e) => {
             selected = e.target
@@ -113,16 +89,12 @@ function dragDropEvents() {
                 }
             }
         })
-        puzzleDivs[i].addEventListener('dragenter', (e) => {
+        puzzleDivs[i].addEventListener('dragenter', () => {
             puzzleDivs[i].classList.add('active')
         })
-        puzzleDivs[i].addEventListener('dragleave', (e) => {
+        puzzleDivs[i].addEventListener('dragleave', () => {
             console.log('leave')
             puzzleDivs[i].classList.remove('active')
         })
     })
 }
-
-createElments();
-addDraggableDivs();
-dragDropEvents();

@@ -19,6 +19,7 @@ header {
   background-color: #D6F6DE; /* Fundo Verde Claro */
   padding: 20px 0;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  display: block;
 }
 
 .navbar {
@@ -190,6 +191,7 @@ header {
   border-radius: 15px;
   font-size: 1rem;
   transition: background-color 0.3s;
+  margin-left: 0;
 }
 
 .content-box .btn:hover {
