@@ -35,8 +35,19 @@ export function changeBrightness(factor, sprite) {
   return spriteOutput;
 }
 
+let tempoInicial = new Date()
+let concluido = false
+let tentativas = 0
+
 function displayVictoryMess(moves) {
-  document.getElementById("moves").innerHTML = "Você se moveu " + moves + " Vezes.";
+  const tempoTotal = (new Date() - tempoInicial) / 1000; // Calcula o tempo em segundos
+  concluido = true 
+
+  document.getElementById("moves").innerHTML = "Você se moveu " + moves + " Vezes." 
+  + `Tempo Total: ${tempoTotal.toFixed(2)}`
+
+  const dados = [concluido, tentativas, tempoTotal.toFixed(2)];
+  localStorage.setItem('Exer2', JSON.stringify(dados))
   toggleVisablity("Message-Container");
 }
 

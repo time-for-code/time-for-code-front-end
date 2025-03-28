@@ -35,8 +35,18 @@ export function changeBrightness(factor, sprite) {
   return spriteOutput;
 }
 
+let tempoInicial = new Date();
+let concluido = false
+let tentativas = 0
+
 function displayVictoryMess(moves) {
-  document.getElementById("moves").innerHTML = "Você se moveu " + moves + " Vezes.";
+  concluido = true
+  const tempoTotal = ((new Date() - tempoInicial) / 1000) // Calcula o tempo em segundos
+  const dados = [concluido, tentativas, tempoTotal.toFixed(2)];
+
+  localStorage.setItem('Exer3', JSON.stringify(dados))
+
+  document.getElementById("moves").innerHTML = "Você se moveu " + moves + " Vezes." + `Tempo Total: ${tempoTotal.toFixed(2)}`
   toggleVisablity("Message-Container");
 }
 
@@ -491,7 +501,6 @@ function Player(maze, c, _cellsize, onComplete, sprite) {
 
     if (mazeInstructionIndex === mazeInstruction.length - 1) {
       mascot.style.visibility = "hidden";
-      window.removeEventListener("resize", false);
     }
 
     let divide = instruction.split(" ");

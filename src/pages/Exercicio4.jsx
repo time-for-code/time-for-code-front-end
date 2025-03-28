@@ -28,18 +28,13 @@ const Exercicio4 = () => {
 
   return (
     <>
-      <div className="container">
+      <div className="container1">
         <h1>Monte o Quebra-Cabeça</h1>
         <div className="puzzle-wrapper">
           <div className="cells"></div>
           <div className="puzzle"></div>
           <div className="final-img"></div>
-          <div
-            id="personagem"
-            className="personagem"
-            onClick={() => toggleVisablity("personagem")}
-            style={{ visibility: "visible" }}
-          >
+          <div id="personagem" className="personagem" onClick={() => toggleVisablity("personagem")} style={{ visibility: "visible" }}>
             <img src="../public/img/soso.png" alt="Soso" />
             <div className="text-content">
               <p id="instructions">
@@ -54,7 +49,7 @@ const Exercicio4 = () => {
         <div className="modal-content">
           <h2 className="modal-heading">Parabéns!</h2>
           <h3 className="modal-text">Você finalizou a tarefa.</h3>
-          <Link to={'/home'}>
+          <Link to={'/statistics'}>
             <button className="modal-btn btn">Finalizar</button>
           </Link>
         </div>

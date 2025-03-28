@@ -80,7 +80,7 @@ h1 {
   --height: 16vw; 
 }
 
-.container {
+.container1 {
   height: 100vh;
   display: grid;
   place-items: center;
