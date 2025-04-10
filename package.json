@@ -28,7 +28,8 @@
     "jquery": "^3.7.1",
     "jquery-touchswipe": "^1.6.19",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "time-for-code-front-end": "file:"
   },
   "devDependencies": {
     "@tanstack/eslint-plugin-query": "^5.62.16",
