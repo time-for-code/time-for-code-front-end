@@ -4,6 +4,7 @@ import { useMutation } from '@tanstack/react-query';
 import { cadastro } from '../api/User';
 import { useState } from 'react';
 import { useUser } from '../contexts/UserContext';
+import SuccessPopUp from './successPopUp';
 
 const Cadastro = () => {
     const [nome, setNome] = useState('');
@@ -45,7 +46,7 @@ const Cadastro = () => {
                     <img src="/img/grupoMascotes.png" alt="grupoMascotes" />
                 </div>
                 {mutation.isSuccess ? (
-                    alert('Cadastro realizado com sucesso!')
+                    <SuccessPopUp message="Cadastro realizado com sucesso!" />
                 ) : (
                     <div className="login-content">
                         <form action={() => mutation.mutate({ nome, anoNascimento, email, senha })}>
