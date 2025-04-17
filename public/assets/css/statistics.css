@@ -1,0 +1,170 @@
+.statistics-container {
+  font-family: "Poppins", sans-serif;
+  background-color: #dbc4f8;
+  padding: 30px;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.title-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 25px;
+}
+
+.title-container h1 {
+  font-size: 2.5rem;
+  color: #6a0dad;
+  text-shadow: 2px 2px #ffffff;
+}
+
+.title h1 {
+  font-size: 2.5rem;
+  color: #6a0dad;
+  /* Dark purple */
+  margin-bottom: 25px;
+  text-shadow: 2px 2px #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.statistics-grid {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 25px;
+  justify-content: center;
+  overflow-x: auto;
+  padding: 10px;
+}
+
+.statistics-grid::-webkit-scrollbar {
+  height: 8px;
+}
+
+.statistics-grid::-webkit-scrollbar-thumb {
+  background-color: #6a0dad;
+  /* Dark purple */
+  border-radius: 4px;
+}
+
+.statistics-grid::-webkit-scrollbar-track {
+  background-color: #dbc4f8;
+}
+
+.exercise-card {
+  background: linear-gradient(135deg, #dbc4f8, #ffb6c1);
+  /* Light purple to light pink */
+  border: 2px solid #ff69b4;
+  /* Hot pink */
+  border-radius: 15px;
+  padding: 20px;
+  width: 300px;
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.exercise-card:nth-child(2) {
+  background: linear-gradient(135deg, #dbc4f8, #87cefa);
+  /* Light purple to sky blue */
+  border: 2px solid #4682b4;
+  /* Steel blue */
+}
+
+.exercise-card:nth-child(3) {
+  background: linear-gradient(135deg, #dbc4f8, #98fb98);
+  /* Light purple to pale green */
+  border: 2px solid #32cd32;
+  /* Lime green */
+}
+
+.exercise-card:nth-child(4) {
+  background: linear-gradient(135deg, #dbc4f8, #ffa07a);
+  /* Light purple to light salmon */
+  border: 2px solid #ff4500;
+  /* Orange red */
+}
+
+.exercise-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+}
+
+.exercise-card .exercise-details {
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.exercise-card p {
+  font-size: 1.2rem;
+  color: #4b0082;
+  /* Indigo */
+  margin: 8px 0;
+}
+
+.exercise-title {
+  font-size: 1.5rem;
+  color: #6a0dad;
+  /* Dark purple */
+  margin-bottom: 10px;
+  text-shadow: 1px 1px #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: larger;
+  font-weight: bold;
+  gap: 5px;
+}
+
+.btn {
+  background-color: #6a0dad;
+  /* Dark purple */
+  color: white;
+  font-size: 1.5rem;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 1rem;
+  cursor: pointer;
+  margin-top: 30px;
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #b19cd9;
+  /* Medium purple */
+}
+
+.finish-btn {
+  background-color: #8a2be2;
+  /* Blue violet */
+}
+
+.finish-btn:hover {
+  background-color: #6a0dad;
+  /* Dark purple */
+}
+
+.star-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 5px;
+  margin-top: 10px;
+}
+
+.star-icon {
+  width: 20px;
+  height: 20px;
+}

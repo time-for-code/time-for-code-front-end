@@ -18,6 +18,7 @@ import { Route as rootRoute } from './routes/__root'
 
 const StatisticsLazyImport = createFileRoute('/statistics')()
 const RegisterLazyImport = createFileRoute('/register')()
+const PerformanceLazyImport = createFileRoute('/performance')()
 const LoginLazyImport = createFileRoute('/login')()
 const HomeLazyImport = createFileRoute('/home')()
 const IndexLazyImport = createFileRoute('/')()
@@ -36,6 +37,12 @@ const RegisterLazyRoute = RegisterLazyImport.update({
   path: '/register',
   getParentRoute: () => rootRoute,
 } as any).lazy(() => import('./routes/register.lazy').then((d) => d.Route))
+
+const PerformanceLazyRoute = PerformanceLazyImport.update({
+  id: '/performance',
+  path: '/performance',
+  getParentRoute: () => rootRoute,
+} as any).lazy(() => import('./routes/performance.lazy').then((d) => d.Route))
 
 const LoginLazyRoute = LoginLazyImport.update({
   id: '/login',
@@ -86,6 +93,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LoginLazyImport
       parentRoute: typeof rootRoute
     }
+    '/performance': {
+      id: '/performance'
+      path: '/performance'
+      fullPath: '/performance'
+      preLoaderRoute: typeof PerformanceLazyImport
+      parentRoute: typeof rootRoute
+    }
     '/register': {
       id: '/register'
       path: '/register'
@@ -116,6 +130,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexLazyRoute
   '/home': typeof HomeLazyRoute
   '/login': typeof LoginLazyRoute
+  '/performance': typeof PerformanceLazyRoute
   '/register': typeof RegisterLazyRoute
   '/statistics': typeof StatisticsLazyRoute
   '/exercise/$id': typeof ExerciseIdLazyRoute
@@ -125,6 +140,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexLazyRoute
   '/home': typeof HomeLazyRoute
   '/login': typeof LoginLazyRoute
+  '/performance': typeof PerformanceLazyRoute
   '/register': typeof RegisterLazyRoute
   '/statistics': typeof StatisticsLazyRoute
   '/exercise/$id': typeof ExerciseIdLazyRoute
@@ -135,6 +151,7 @@ export interface FileRoutesById {
   '/': typeof IndexLazyRoute
   '/home': typeof HomeLazyRoute
   '/login': typeof LoginLazyRoute
+  '/performance': typeof PerformanceLazyRoute
   '/register': typeof RegisterLazyRoute
   '/statistics': typeof StatisticsLazyRoute
   '/exercise/$id': typeof ExerciseIdLazyRoute
@@ -146,16 +163,25 @@ export interface FileRouteTypes {
     | '/'
     | '/home'
     | '/login'
+    | '/performance'
     | '/register'
     | '/statistics'
     | '/exercise/$id'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/home' | '/login' | '/register' | '/statistics' | '/exercise/$id'
+  to:
+    | '/'
+    | '/home'
+    | '/login'
+    | '/performance'
+    | '/register'
+    | '/statistics'
+    | '/exercise/$id'
   id:
     | '__root__'
     | '/'
     | '/home'
     | '/login'
+    | '/performance'
     | '/register'
     | '/statistics'
     | '/exercise/$id'
@@ -166,6 +192,7 @@ export interface RootRouteChildren {
   IndexLazyRoute: typeof IndexLazyRoute
   HomeLazyRoute: typeof HomeLazyRoute
   LoginLazyRoute: typeof LoginLazyRoute
+  PerformanceLazyRoute: typeof PerformanceLazyRoute
   RegisterLazyRoute: typeof RegisterLazyRoute
   StatisticsLazyRoute: typeof StatisticsLazyRoute
   ExerciseIdLazyRoute: typeof ExerciseIdLazyRoute
@@ -175,6 +202,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexLazyRoute: IndexLazyRoute,
   HomeLazyRoute: HomeLazyRoute,
   LoginLazyRoute: LoginLazyRoute,
+  PerformanceLazyRoute: PerformanceLazyRoute,
   RegisterLazyRoute: RegisterLazyRoute,
   StatisticsLazyRoute: StatisticsLazyRoute,
   ExerciseIdLazyRoute: ExerciseIdLazyRoute,
@@ -193,6 +221,7 @@ export const routeTree = rootRoute
         "/",
         "/home",
         "/login",
+        "/performance",
         "/register",
         "/statistics",
         "/exercise/$id"
@@ -206,6 +235,9 @@ export const routeTree = rootRoute
     },
     "/login": {
       "filePath": "login.lazy.jsx"
+    },
+    "/performance": {
+      "filePath": "performance.lazy.jsx"
     },
     "/register": {
       "filePath": "register.lazy.jsx"
