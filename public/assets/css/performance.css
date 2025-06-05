@@ -1,8 +1,12 @@
 .layout {
-    display: grid;
-    grid-template-columns: 1fr;
-    padding: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
     place-content: center;
+    box-sizing: border-box;
+    width: 100vw;
+    min-height: 100vh;
+    max-width: 100vw;
 }
 
 .summary-section h1 {
@@ -13,10 +17,11 @@
 
 .pilares-section {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    gap: 20px;
-    justify-content: center;
-    align-items: center;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    width: 100%;
+    justify-content: stretch;
+    align-items: stretch;
 }
 
 .card-pilars{
@@ -30,6 +35,7 @@
     min-width: fit-content;
     height: 280px; 
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: relative;
 }
 
 .card-info {
@@ -54,7 +60,7 @@
 }
 
 .card-graphic {
-    position: relative;
+    position: absolute;
     width: 140px;
     height: 160px;
     display: flex;
@@ -153,5 +159,30 @@
     background-color: #f44336; 
 }
 
+@media (max-width: 900px) {
+    .pilares-section {
+        grid-template-columns: 1fr 1fr;
+    }
+    .info {
+        grid-template-columns: 1fr;
+    }
+}
 
-/* FIm da stilização da Tabela de Exercicios*/
+@media (max-width: 600px) {
+    .layout {
+        padding: 1rem;
+        gap: 1rem;
+    }
+    .pilares-section {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+    .card-pilars {
+        height: auto;
+        grid-template-columns: 1fr;
+    }
+    .info {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+}

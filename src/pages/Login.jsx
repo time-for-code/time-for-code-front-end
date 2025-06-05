@@ -14,7 +14,7 @@ const Login = () => {
   const mutation = useMutation({
     mutationKey: ["login"],
     mutationFn: async ({ email, senha }) => {
-      login(email, senha);
+      login(email, parseInt(senha));
     },
     onError: (e) => console.log(e),
     onSuccess: (data) => {
@@ -34,7 +34,7 @@ const Login = () => {
           <SuccessPopUp message="Login realizado com sucesso!" />
         ) : (
           <div className="login-content">
-            <form action={() => mutation.mutate}>
+            <form action={() => mutation.mutate({ email, senha })}>
               <h2 className="title">Login</h2>
               <div className="input-div one">
                 <div className="i">

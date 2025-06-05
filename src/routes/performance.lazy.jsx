@@ -7,6 +7,23 @@ export const Route = createLazyFileRoute("/performance")({
 });
 
 function PerformanceComponent() {
+  const keys = Object.keys(localStorage).filter((key) =>
+    key.startsWith("Exer")
+  );
+  
+  // Add static fallback values for testing
+  const defaultTodosExer = [
+    [0, 2, "00:01:30"],
+    [0, 1, "00:02:10"],
+    [0, 3, "00:01:50"],
+    [0, 2, "00:03:00"],
+  ];
+
+  const todosExer =
+    keys.length === 4
+      ? keys.map((key) => JSON.parse(localStorage.getItem(key)))
+      : defaultTodosExer;
+
   const pillars = [
     { name: "Decomposição", img: "/img/ana.png", lessons: 8, total: 10 },
     {
@@ -20,10 +37,30 @@ function PerformanceComponent() {
   ];
 
   const exercises = [
-    { name: "Exercício 1", time: "10m", tries: 2, completed: true },
-    { name: "Exercício 2", time: "15m", tries: 3, completed: false },
-    { name: "Exercício 3", time: "12m", tries: 1, completed: true },
-    { name: "Exercício 4", time: "8m", tries: 1, completed: true },
+    {
+      name: "Organize as Cores do Arco-Íris",
+      time: todosExer[0][2],
+      tries: todosExer[0][1],
+      completed: true,
+    },
+    {
+      name: "Navegar o labirinto",
+      time: todosExer[1][2],
+      tries: 0,
+      completed: true,
+    },
+    {
+      name: "Caça ao Tesouro",
+      time: todosExer[2][2],
+      tries: 0,
+      completed: true,
+    },
+    {
+      name: "Monte o Quebra-Cabeça",
+      time: todosExer[3][2],
+      tries: 0,
+      completed: true,
+    },
   ];
 
   return (

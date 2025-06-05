@@ -5,7 +5,7 @@ export async function login(email, password)  {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({ email, password }),
-  });
+  }).catch((e) => {throw new Error("Erro de conexão!", e)});
 
   if (!response.ok) {
     throw new Error("Login Falhou!");
@@ -22,7 +22,7 @@ export async function cadastro(nome, anoNascimento, email, senha)  {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({ nome, anoNascimento, email, senha }),
-  });
+  }).catch((e) => {throw new Error("Erro de conexão!", e)});
 
   if (!response.ok) {
     throw new Error("Cadastro Falhou!");

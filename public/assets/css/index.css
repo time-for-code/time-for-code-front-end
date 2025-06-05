@@ -51,11 +51,11 @@ body {
 
 a {
   text-decoration: none !important;
-  color: #ffbe98; /* Laranja Claro */
+  color: white; /* Laranja Claro */
 }
 
 a:hover {
-  color: #f9b2bc; /* Rosa Claro */
+  color: black; /* Rosa Claro */
 }
 
 h1,

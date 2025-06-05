@@ -4,7 +4,7 @@ import { useMutation } from '@tanstack/react-query';
 import { cadastro } from '../api/User';
 import { useState } from 'react';
 import { useUser } from '../contexts/UserContext';
-import SuccessPopUp from './successPopUp';
+import SuccessPopUp from '../components/successPopUp';
 
 const Cadastro = () => {
     const [nome, setNome] = useState('');
@@ -13,23 +13,10 @@ const Cadastro = () => {
     const [senha, setSenha] = useState('');
     const { armazenarCadastro } = useUser()
 
-    const handleAnoNascimentoChange = (e) => {
-        let input = e.target.value.replace(/\D/g, ""); // Remove non-numeric characters
-        if (input.length > 8) {
-            input = input.substring(0, 8); // Limit to 8 digits
-        }
-        if (input.length > 4) {
-            input = input.replace(/^(\d{2})(\d{2})(\d+)/, "$1/$2/$3"); // Format as DD/MM/YYYY
-        } else if (input.length > 2) {
-            input = input.replace(/^(\d{2})(\d+)/, "$1/$2"); // Format as DD/MM
-        }
-        setAnoNascimento(input);
-    };
-
     const mutation = useMutation({
         mutationKey: ['cadastro'],
         mutationFn: async ({ nome, anoNascimento, email, senha }) => {
-            cadastro(nome, anoNascimento, email, senha)
+            cadastro(nome, anoNascimento, email, parseInt(senha))
         },
         onError: (e) => console.log(e),
         onSuccess: (data) => {
@@ -81,7 +68,7 @@ const Cadastro = () => {
                                         id="birthyear"
                                         maxLength="10"
                                         value={anoNascimento}
-                                        onChange={handleAnoNascimentoChange}
+                                        onChange={(e) => setAnoNascimento(e.target.value)}
                                         required
                                         title="Digite uma data válida no formato DD/MM/AAAA"
                                     />

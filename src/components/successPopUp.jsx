@@ -1,4 +1,3 @@
-import React from 'react';
 import '../../public/assets/css/successPopUp.css';
 import { Link } from '@tanstack/react-router';
 
