@@ -43,7 +43,7 @@ export function addDraggableDivs(draggableDivs, cells) {
   let shufflePosition = shufflePositions();
 
   draggableDivs.forEach((div, i) => {
-    div.style.backgroundImage = 'url("../public/img/grupoMascotes.png")';
+    div.style.backgroundImage = 'url("/img/grupoMascotes.png")';
     cells.append(div);
     div.style.backgroundPosition = `-${Positions[i][1]}vw -${Positions[i][0]}vw`;
     div.style.left = `${shufflePosition[i][0]}vw`;

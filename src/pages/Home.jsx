@@ -12,7 +12,7 @@ const Home = () => {
                             <p>Aprenda sobre tecnologia de forma divertida e interativa!</p>
                         </div>
                         <div className="col-6">
-                            <img src="../public/img/grupoMascotes.png" alt="Ilustração" className="banner-img" />
+                            <img src="/img/grupoMascotes.png" alt="Ilustração" className="banner-img" />
                         </div>
                     </div>
                 </div>

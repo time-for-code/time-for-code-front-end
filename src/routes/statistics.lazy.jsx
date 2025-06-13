@@ -1,6 +1,5 @@
 import { createLazyFileRoute, Link } from "@tanstack/react-router";
 import "../../public/assets/css/statistics.css";
-import "primeicons/primeicons.css";
 
 export const Route = createLazyFileRoute("/statistics")({
   component: statisticsComponent,
@@ -13,24 +12,7 @@ function statisticsComponent() {
   const todosExer = keys.map((key) => JSON.parse(localStorage.getItem(key)));
   console.log(todosExer)
 
-  /*
-  gold:#C9B037
-  silver:#B4B4B4
-  bronze:#CD7F32
-  */
 
-  const Star = () => (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 24 24"
-      fill="#C9B037"
-      width="80px"
-      height="80px"
-      className="star-icon"
-    >
-      <path d="M12 .587l3.668 7.431 8.2 1.192-5.934 5.787 1.4 8.172L12 18.897l-7.334 3.872 1.4-8.172L.132 9.21l8.2-1.192z" />
-    </svg>
-  );
 
   return (
     <div className="statistics-container">
@@ -45,7 +27,7 @@ function statisticsComponent() {
             style={{ borderRight: "5px solid #D5C2E0" }}
           >
             <div className="star-container">
-              <Star />
+              <Star width={"28px"} height={"28px"}/>
             </div>
             <div className="points-container">
               <div className="points">
@@ -166,3 +148,22 @@ function statisticsComponent() {
     </div>
   );
 }
+
+  /*
+  gold:#C9B037
+  silver:#B4B4B4
+  bronze:#CD7F32
+  */
+
+export const Star = ({ width, height, color }) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    fill="#C9B037"
+    width={width ? width : "80px"}
+    height={height ? height : "80px"}
+    className="star-icon"
+  >
+    <path d="M12 .587l3.668 7.431 8.2 1.192-5.934 5.787 1.4 8.172L12 18.897l-7.334 3.872 1.4-8.172L.132 9.21l8.2-1.192z" />
+  </svg>
+);

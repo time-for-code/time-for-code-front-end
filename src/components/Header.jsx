@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import "../../public/assets/css/header.css";
 import { useUser } from "../contexts/UserContext";
-// import "../../public/assets/css/index.css";
+import "../../public/assets/css/index.css";
 
 const Header = () => {
   const { user } = useUser();
@@ -11,6 +11,11 @@ const Header = () => {
       data-wow-duration="0.75s"
       data-wow-delay="0s"
     >
+      <div className="logo">
+        <a href="/">
+          <img src="/img/logo.png" alt="Logo" />
+        </a>
+      </div>
       <div className="header-nav">
         <nav className="main-nav">
           <ul className="flex-container">

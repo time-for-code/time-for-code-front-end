@@ -25,7 +25,7 @@ const BannerPrincipal = () => {
                             </div>
                             <div className="col-lg-6">
                                 <div className="right-image wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.5s">
-                                    <img src="img/grupoMascotes.png" alt="Ilustração"></img>
+                                    <img src="/img/grupoMascotes.png" alt="Ilustração"></img>
                                 </div>
                             </div>
                         </div>

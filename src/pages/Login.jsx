@@ -25,10 +25,10 @@ const Login = () => {
 
   return (
     <>
-      <img className="wave" src="img/wave.png" alt="wave" />
+      <img className="wave" src="/img/wave.png" alt="wave" />
       <div className="container">
         <div className="img">
-          <img src="img/grupoMascotes.png" alt="grupoMascotes" />
+          <img src="/img/grupoMascotes.png" alt="grupoMascotes" />
         </div>
         {mutation.isSuccess ? (
           <SuccessPopUp message="Login realizado com sucesso!" />

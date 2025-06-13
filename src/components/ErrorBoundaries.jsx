@@ -37,7 +37,7 @@ class ErrorBoundary extends React.Component {
           <div className="error-boundary-fallback">
             <div className="error-boundary-content">
               <h1>WHOPPS!</h1>
-              <h2>Alguma coisa deu errado. Isso é constrangedor</h2>
+              <h2>Alguma coisa deu errado. Que Vergonha</h2>
               <button className="btn exception-button"
                 onClick={this.handleGoHome}
               >
@@ -70,7 +70,7 @@ export const Pagina404 = () => {
   return (
     <div className="container-404">
       <h1>404 - Página não encontrada</h1>
-      <p>Desculpe, a página que você está procurando não existe.</p>
+      <p>A página que você está procurando não existe.</p>
       <button onClick={() => handleGoHome()} className="btn exception-button">
         Voltar para a página inicial
       </button>

@@ -35,7 +35,7 @@ const Exercicio4 = () => {
           <div className="puzzle"></div>
           <div className="final-img"></div>
           <div id="personagem" className="personagem" onClick={() => toggleVisablity("personagem")} style={{ visibility: "visible" }}>
-            <img src="../public/img/soso.png" alt="Soso" />
+            <img src="/img/soso.png" alt="Soso" />
             <div className="text-content">
               <p id="instructions">
                 Ajude-me a montar o quebra-cabeça com a foto da nossa turma

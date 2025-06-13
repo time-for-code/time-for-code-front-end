@@ -4,6 +4,7 @@ import { routeTree } from "../routeTree.gen";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { createRouter, RouterProvider } from "@tanstack/react-router";
 import { UserProvider } from "../contexts/UserContext";
+import "primeicons/primeicons.css";
 
 const router = createRouter({ routeTree })
 const queryClient = new QueryClient();

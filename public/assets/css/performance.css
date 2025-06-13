@@ -1,188 +1,425 @@
-.layout {
-    display: flex;
-    flex-direction: column;
-    padding: 1rem;
-    place-content: center;
-    box-sizing: border-box;
-    width: 100vw;
-    min-height: 100vh;
-    max-width: 100vw;
+/* Layout principal da página de performance */
+.performance-layout {
+  display: grid;
+  grid-template-columns: 75% 1fr;
+  gap: 10px;
+  width: 100vw;
+  box-sizing: border-box;
 }
 
-.summary-section h1 {
-    font-size: 2.5rem;
-    color: #DBC4F8;
-    margin-bottom: 20px;
+.content-performance{
+  padding: 1rem;
 }
 
+.content-performance.right {
+  margin: 1rem;
+  padding: 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 1rem;
+}
+
+/* Seção dos pilares */
 .pilares-section {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 10px;
-    width: 100%;
-    justify-content: stretch;
-    align-items: stretch;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  width: 100%;
+  justify-content: stretch;
+  align-items: stretch;
+  box-sizing: border-box;
 }
 
-.card-pilars{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-    background-color: #FDF3D6; 
-    border-radius: 1rem;
-    padding: 1rem;
-    text-align: center;
-    min-width: fit-content;
-    height: 280px; 
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    position: relative;
+/* Card de cada pilar */
+.card-pilars {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  background-color: #f9f9f9;
+  border-radius: 1rem;
+  padding: 1rem;
+  border-left: 8px solid;
+  text-align: center;
+  min-width: fit-content;
+  height: 280px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: relative;
+  box-sizing: border-box;
 }
 
+/* Informações do pilar */
 .card-info {
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-    padding: 10px;
-    gap: 30px;
-} 
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  padding: 10px;
+  gap: 30px;
+}
 
 .card-info img {
-    display: block;
-    size: 1rem;
-    height: 150px;
-    width: fit-content;
-    background-size: cover;
+  display: block;
+  size: 1rem;
+  height: 150px;
+  width: fit-content;
+  background-size: cover;
 }
 
 .card-info h2 {
-    font-size: 1.5rem;
-    color: #333;
+  font-size: 1.5rem;
+  color: #333;
 }
 
+/* Gráfico circular do pilar */
 .card-graphic {
-    position: absolute;
-    width: 140px;
-    height: 160px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 140px;
+  height: 140px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none;
 }
 
 .card-graphic svg {
-    position: absolute;
-    width: 140px;
-    height: 140px;
-    transform: rotate(-90deg);
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+  display: block;
 }
 
 .card-graphic .background-circle {
-    fill: none;
-    stroke: #e0e0e0;
-    stroke-width: 10;
+  fill: none;
+  stroke: #e0e0e0;
+  stroke-width: 10;
 }
 
 .card-graphic .progress-circle {
-    fill: none;
-    stroke: #DBC4F8; 
-    stroke-width: 10;
-    stroke-linecap: round;
-    stroke-dasharray: 0, 440;
-    transition: stroke-dasharray 0.3s ease;
+  fill: none;
+  stroke: #dbc4f8;
+  stroke-width: 10;
+  stroke-linecap: round;
+  stroke-dasharray: 0, 440;
+  transition: stroke-dasharray 0.3s ease;
 }
 
 .card-graphic .percentage {
-    position: absolute;
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #333;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
+  pointer-events: none;
 }
 
-.info{
-    display: grid;
-    grid-template-columns: 1.5fr 1fr;
-    gap: 20px;
-    margin-top: 2rem;
-}
-
-/* Inicio da stilização da Tabela de Exercicios*/
-
+/* Seção da tabela de exercícios */
 .exercises-section {
-    display: flex;
-    flex-direction: column;
-    padding: 1rem;
-    background-color: #f9f9f9;
-    border-radius: 1rem;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+   width: 100%;
+   height: auto;
+  padding: 1rem;
+  margin-top: 4rem;
+  background-color: #f9f9f9;
+  border-radius: 1rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .exercises-section h2 {
-    font-size: 2rem;
-    color: #333;
-    text-align: center;
-    margin-bottom: 1rem;
+  font-size: 2rem;
+  color: #333;
+  text-align: center;
+  margin-bottom: 1rem;
 }
 
+/* Tabela de exercícios */
 .exercises-table {
-    width: 100%;
-    border-collapse: collapse;
-    text-align: center;
-    font-size: 1rem;
+  width: 100%;
+  border-collapse: collapse;
+  text-align: center;
+  font-size: 1rem;
 }
 
 .exercises-table th,
 .exercises-table td {
-    padding: 10px;
-    border: 1px solid #ddd;
+  padding: 10px;
+  border: 1px solid #ddd;
 }
 
 .exercises-table th {
-    background-color: #FDF3D6;
-    color: #333;
-    font-weight: bold;
+  background-color: #fdf3d6;
+  color: #333;
+  font-weight: bold;
 }
 
 .exercises-table td .status-button {
-    display: inline-block;
-    padding: 5px 10px;
-    border-radius: 1rem;
-    font-size: 0.9rem;
-    font-weight: bold;
-    color: #fff;
-    text-align: center;
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 1rem;
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: #fff;
+  text-align: center;
 }
 
 .exercises-table td .status-button.completed {
-    background-color: #4caf50; 
+  background-color: #4caf50;
 }
 
 .exercises-table td .status-button.incomplete {
-    background-color: #f44336; 
+  background-color: #f44336;
 }
 
+/* ================= Ranking Table ================= */
+.ranking-table {
+  background: #f9f9f9;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-height: 350px;
+}
+
+.ranking-table-scroll {
+  max-height: 100%;
+  overflow-y: auto;
+  width: 100%;
+}
+
+.ranking-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  gap: 30px;
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.ranking-header h2 {
+  font-size: 2rem;
+  color: #333;
+  flex: 1;
+  text-align: center;
+}
+
+.ranking-table-inner {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 1rem;
+  background: #fff;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+}
+
+.ranking-table-inner th,
+.ranking-table-inner td {
+  padding: 10px 16px;
+  border-bottom: 1px solid #eee;
+  text-align: center;
+}
+
+.ranking-table-inner th {
+  background: #e9e3f7;
+  color: #333;
+  font-weight: bold;
+}
+
+.ranking-table-inner tr:last-child td {
+  border-bottom: none;
+}
+
+.ranking-table-inner tr:nth-child(4) td {
+  background: #f8dd56;
+  color: #333;
+  font-weight: bold;
+}
+
+/* ===== Botão e Modal de Pontuação ===== */
+.pontuation-info-btn {
+  position: absolute;
+  right: 10px;
+  width: 48px;
+  height: 48px;
+  min-width: 48px;
+  min-height: 48px;
+  max-width: 48px;
+  max-height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #e9e3f7;
+  color: #333;
+  border: none;
+  border-radius: 50%;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s;
+  margin-left: auto;
+}
+
+.pontuation-info-btn i {
+  font-size: 1.5rem;
+}
+
+.pontuation-info-btn:hover {
+  background: #d5c2e0;
+}
+
+.pontuation-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.25);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pontuation-modal {
+  background: #fff;
+  border-radius: 1rem;
+  padding: 2rem 1.5rem 1.5rem 1.5rem;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.18);
+  max-width: 350px;
+  width: 90vw;
+  position: relative;
+  text-align: left;
+  animation: pontuationModalIn 0.2s;
+}
+
+@keyframes pontuationModalIn {
+  from {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.pontuation-modal h3 {
+  margin-top: 0;
+  font-size: 1.3rem;
+  color: #6c4fa1;
+}
+
+.pontuation-modal ul {
+  margin: 1rem 0 0 1.2rem;
+  padding: 0;
+  color: #444;
+  font-size: 1rem;
+}
+
+.pontuation-modal-close {
+  position: absolute;
+  top: 0.7rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #888;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+.pontuation-modal-close:hover {
+  color: #333;
+}
+
+/* ================= Estilo do Perfil ================= */
+.performance-profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 1rem;
+  padding: 2.8rem 0;
+  background-color: #f9f9f9;
+  position: relative;
+  box-sizing: border-box;
+  border-top: 8px solid;
+}
+
+.profile-circle {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 6px solid;
+}
+
+.profile-rank {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #6c4fa1;
+}
+
+.profile-stars {
+  display: flex;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.profile-note {
+  margin-top: 12px;
+  font-size: 1.2rem;
+  color: #333;
+  text-align: center;
+  font-weight: bold;
+}
+
+/* ================= Responsividade ================= */
 @media (max-width: 900px) {
-    .pilares-section {
-        grid-template-columns: 1fr 1fr;
-    }
-    .info {
-        grid-template-columns: 1fr;
-    }
+  .performance-layout {
+    grid-template-columns: 1fr;
+  }
+  .pilares-section {
+    grid-template-columns: 1fr 1fr;
+  }
+  .info {
+    grid-template-columns: 1fr;
+  }
+  .ranking-table {
+    margin-top: 0;
+    margin-bottom: 1rem;
+  }
 }
 
 @media (max-width: 600px) {
-    .layout {
-        padding: 1rem;
-        gap: 1rem;
-    }
-    .pilares-section {
-        grid-template-columns: 1fr;
-        gap: 10px;
-    }
-    .card-pilars {
-        height: auto;
-        grid-template-columns: 1fr;
-    }
-    .info {
-        grid-template-columns: 1fr;
-        gap: 10px;
-    }
+  .layout {
+    padding: 1rem;
+    gap: 1rem;
+  }
+  .performance-layout {
+    grid-template-columns: 1fr;
+  }
+  .pilares-section {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .card-pilars {
+    height: auto;
+    grid-template-columns: 1fr;
+  }
+  .info {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .ranking-table-inner th,
+  .ranking-table-inner td {
+    padding: 8px 4px;
+    font-size: 0.95rem;
+  }
 }

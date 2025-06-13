@@ -126,13 +126,26 @@ p {
 }
 
 .personagem {
+    position: fixed;
+    left: 40px;
+    bottom: 0;
+    z-index: 10;
     display: flex;
-    justify-content: center;
-    align-items: start;
-    position: relative;
+    align-items: flex-end;
+    box-sizing: border-box;
+    gap: 30px;
+    justify-content: flex-start;
+    align-items: center;
     padding-top: 110px;
-    padding-right: 60%;
-    z-index: 2;
+    padding-right: 55%;
+    max-width: 95vw;
+}
+
+.personagem img {
+    height: auto;
+    width: 100%;
+    max-height: 300px;
+    max-width: 300px;
 }
 
 .text-content {
@@ -142,8 +155,14 @@ p {
     z-index: inherit;
     border-radius: 1rem;
     padding: 10px;
-    margin-top: 20px;
-    margin-left: 20px;
+    margin-bottom: 40px;
+}
+
+.text-content p {
+    font-size: 1.2rem;
+    color: #4c4c4c;
+    margin: 0;
+    padding: 0 10px;
 }
 
 /* Estilos responsivos */

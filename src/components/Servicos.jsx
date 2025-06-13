@@ -57,7 +57,7 @@ const Servicos = () => {
                                                             </div>
                                                             <div className="col-lg-6 align-self-center">
                                                                 <div className="right-image">
-                                                                    <img src="img/lilu.png" alt="lilu"></img>
+                                                                    <img src="/img/lilu.png" alt="lilu"></img>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -80,7 +80,7 @@ const Servicos = () => {
                                                             </div>
                                                             <div className="col-lg-6 align-self-center">
                                                                 <div className="right-image">
-                                                                    <img src="img/cadu.png" alt="cadu"></img>
+                                                                    <img src="/img/cadu.png" alt="cadu"></img>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -104,7 +104,7 @@ const Servicos = () => {
                                                             </div>
                                                             <div className="col-lg-6 align-self-center">
                                                                 <div className="right-image">
-                                                                    <img src="img/ana.png" alt="ana"></img>
+                                                                    <img src="/img/ana.png" alt="ana"></img>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -128,7 +128,7 @@ const Servicos = () => {
                                                             </div>
                                                             <div className="col-lg-6 align-self-center">
                                                                 <div className="right-image">
-                                                                    <img src="img/soso.png" alt="soso"></img>
+                                                                    <img src="/img/soso.png" alt="soso"></img>
                                                                 </div>
                                                             </div>
                                                         </div>
