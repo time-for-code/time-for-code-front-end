@@ -154,23 +154,6 @@ body {
   background-color: #726ae3;
 }
 
-.border-first-button a {
-  display: inline-block !important;
-  padding: 10px 20px !important;
-  background-color: #dbc4f8; /* Rosa Claro */
-  color: #fff; /* Branco */
-  border: 1px solid #dbc4f8; /* Rosa Claro */
-  border-radius: 23px;
-  font-weight: 500 !important;
-  letter-spacing: 0.3px !important;
-  transition: all 0.5s;
-}
-
-.border-first-button a:hover {
-  background-color: #c197f5; /* Laranja Claro */
-  color: #fff !important;
-}
-
 .intro-banner {
   text-align: center;
   padding-top: 200px;
@@ -1878,6 +1861,30 @@ footer p a {
   color: #fff;
   transition: all 0.5s;
 }
+
+/*return button*/
+.return-button {
+    position: absolute;
+    top: 24px;
+    left: 32px;
+    z-index: 1000;
+    background: #dbc4f8;
+    color: #fff;
+    padding: 8px 18px;
+    border-radius: 23px;
+    font-weight: 500;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: background 0.3s, color 0.3s;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.return-button:hover {
+    background: #c197f5;
+    color: #fff;
+}
+
+/* Responsive Styles */
 
 @media (max-width: 1200px) {
   .header-area .main-nav .logo h4 {

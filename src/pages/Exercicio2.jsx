@@ -2,12 +2,13 @@ import { loadEvents } from '../../public/assets/js/exercicio2';
 import '../../public/assets/css/exercicio2.css';
 import { useEffect, useRef } from 'react';
 import { toggleVisablity } from '../utils/utilidades.js'
-import { Link } from '@tanstack/react-router';
+import { useNavigate, Link } from '@tanstack/react-router';
 
 export var mazeCanvas, virtCanvas, context, imgData, ctx;
 
 const Exercicio2 = () => {
   const elementsCreated = useRef(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (elementsCreated.current) return;
@@ -25,6 +26,9 @@ const Exercicio2 = () => {
 
   return (
     <>
+      <Link reloadDocument="true" to="/home" className="return-button">
+        &#8592;  Continuar em outra hora ?
+      </Link>
       <div id="page">
         <h2>Navegar o labirinto</h2>
         <div id="Message-Container">
@@ -32,9 +36,7 @@ const Exercicio2 = () => {
             <h1>Parabéns!</h1>
             <p>Você finalizou a tarefa.</p>
             <p id="moves"></p>
-            <Link to={"/exercise/3"}>
-              <button id="okBtn">Legal!</button>
-            </Link>
+            <button id="okBtn" onClick={() => navigate({ to: "/exercise/3" , reloadDocument: true})}>Legal!</button>
           </div>
         </div>
         <div className="background">

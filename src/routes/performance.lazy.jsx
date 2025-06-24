@@ -199,11 +199,11 @@ function PerformanceComponent() {
                     </button>
                     <h3>Sistema de Pontuação</h3>
                     <ul>
-                      <li>+1000 pontos: Concluir todos os exercícios sem erros</li>
-                      <li>+900 pontos: Concluir com até 1 erro</li>
-                      <li>+800 pontos: Concluir com até 2 erros</li>
-                      <li>+1 ponto: Para cada segundo a menos no tempo total</li>
-                      <li>Estrelas: Top 1 (3⭐), Top 2-3 (2⭐), Top 4-5 (1⭐)</li>
+                      <li><strong>+1000 pontos :</strong> Concluir todos os exercícios sem erros</li>
+                      <li><strong>+900 pontos :</strong> Concluir com até 1 erro</li>
+                      <li><strong>+800 pontos :</strong> Concluir com até 2 erros</li>
+                      <li><strong>+1 ponto :</strong> Para cada segundo a menos no tempo total</li>
+                      <li><strong>Estrelas :</strong> Top 1 (3⭐), Top 2-3 (2⭐), Top 4-5 (1⭐)</li>
                     </ul>
                   </div>
                 </div>

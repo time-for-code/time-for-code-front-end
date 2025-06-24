@@ -2,6 +2,7 @@ import { verificarResultado, reiniciarExercicio, embaralharCores, drop, dragOver
 import '../../public/assets/css/exercicio1.css';
 import { useEffect, useRef } from 'react';
 import { toggleVisablity } from '../utils/utilidades.js'
+import { Link } from "@tanstack/react-router";
 
 const Exercicio1 = () => {
     const resultadoRef = useRef(null);
@@ -46,6 +47,9 @@ const Exercicio1 = () => {
 
     return (
         <>
+            <Link reloadDocument="true" to="/home" className="return-button">
+                &#8592;  Continuar em outra hora ?
+            </Link>
             <section className="rainbow-section">
                 <div className="container">
                     <h2>Organize as Cores do Arco-Íris</h2>
@@ -83,7 +87,7 @@ const Exercicio1 = () => {
                         </div>
                     </div>
                 </div>
-            </section >
+            </section>
         </>
     )
 }

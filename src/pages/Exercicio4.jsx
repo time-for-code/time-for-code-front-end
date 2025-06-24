@@ -1,11 +1,12 @@
-import { toggleVisablity } from '../utils/utilidades.js'
+import { toggleVisablity } from "../utils/utilidades.js";
 import "../../public/assets/css/exercicio4.css";
 import { useEffect, useRef } from "react";
 import { addDraggableDivs, createElments, dragDropEvents } from "../../public/assets/js/exercicio4";
-import { Link } from '@tanstack/react-router';
+import { useNavigate, Link } from "@tanstack/react-router";
 
 const Exercicio4 = () => {
   const elementsCreated = useRef(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (elementsCreated.current) return;
@@ -21,20 +22,35 @@ const Exercicio4 = () => {
 
     createElments(puzzle, puzzleDivs, draggableDivs, cellsAmount);
     addDraggableDivs(draggableDivs, cells);
-    dragDropEvents(draggableDivs, puzzleDivs, modal, cellsAmount, attempt, modalBtn);
+    dragDropEvents(
+      draggableDivs,
+      puzzleDivs,
+      modal,
+      cellsAmount,
+      attempt,
+      modalBtn
+    );
 
     elementsCreated.current = true;
   }, []);
 
   return (
     <>
+      <Link reloadDocument="true" to="/home" className="return-button">
+        &#8592;  Continuar em outra hora ?
+      </Link>
       <div className="container1">
         <h1>Monte o Quebra-Cabeça</h1>
         <div className="puzzle-wrapper">
           <div className="cells"></div>
           <div className="puzzle"></div>
           <div className="final-img"></div>
-          <div id="personagem" className="personagem" onClick={() => toggleVisablity("personagem")} style={{ visibility: "visible" }}>
+          <div
+            id="personagem"
+            className="personagem"
+            onClick={() => toggleVisablity("personagem")}
+            style={{ visibility: "visible" }}
+          >
             <img src="/img/soso.png" alt="Soso" />
             <div className="text-content">
               <p id="instructions">
@@ -49,9 +65,12 @@ const Exercicio4 = () => {
         <div className="modal-content">
           <h2 className="modal-heading">Parabéns!</h2>
           <h3 className="modal-text">Você finalizou a tarefa.</h3>
-          <Link to={'/statistics'}>
-            <button className="modal-btn btn">Finalizar</button>
-          </Link>
+          <button
+            className="modal-btn btn"
+            onClick={() => navigate({ to: "/statistics", reloadDocument: true })}
+          >
+            Finalizar
+          </button>
         </div>
       </div>
       <div className="background">

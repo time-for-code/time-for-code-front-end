@@ -5,6 +5,7 @@ import "../../public/assets/css/index.css";
 
 const Header = () => {
   const { user } = useUser();
+  
   return (
     <header
       className="header-container"
@@ -12,7 +13,7 @@ const Header = () => {
       data-wow-delay="0s"
     >
       <div className="logo">
-        <a href="/">
+        <a href={user ? "/home" : "/"}>
           <img src="/img/logo.png" alt="Logo" />
         </a>
       </div>
@@ -21,7 +22,11 @@ const Header = () => {
           <ul className="flex-container">
             <li className="scroll-to-section">
               <div>
-                <Link to={user ? "/home" : "/"} className="active">
+                <Link
+                  reloadDocument="true"
+                  to={user ? "/home" : "/"}
+                  className="active"
+                >
                   Home
                 </Link>
               </div>
@@ -37,19 +42,25 @@ const Header = () => {
             {user ? (
               <li className="scroll-to-section">
                 <div className="login-button">
-                  <Link to={"/performance"}>Relatório</Link>
+                  <Link reloadDocument="true" to={"/performance"}>
+                    Relatório
+                  </Link>
                 </div>
               </li>
             ) : (
               <>
                 <li className="scroll-to-section">
                   <div className="login-button">
-                    <Link to={"/login"}>Login</Link>
+                    <Link reloadDocument="true" to={"/login"}>
+                      Login
+                    </Link>
                   </div>
                 </li>
                 <li className="scroll-to-section">
                   <div className="border-first-button">
-                    <Link to={"/register"}>Criar conta</Link>
+                    <Link reloadDocument="true" to={"/register"}>
+                      Criar conta
+                    </Link>
                   </div>
                 </li>
               </>

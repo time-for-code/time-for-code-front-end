@@ -1,4 +1,4 @@
-import { mazeCanvas, virtCanvas, context, imgData, ctx } from '../../../src/pages/exercicio2';
+import { mazeCanvas, virtCanvas, context, imgData, ctx } from '../../../src/pages/Exercicio2';
 import $ from 'jquery';
 import 'jquery-touchswipe/jquery.touchSwipe.min.js';
 import { toggleVisablity } from '../../../src/utils/utilidades';

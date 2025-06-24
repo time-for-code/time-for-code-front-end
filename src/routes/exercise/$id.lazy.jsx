@@ -1,6 +1,6 @@
 import { createLazyFileRoute } from '@tanstack/react-router'
 import Exercicio1 from '../../pages/Exercicio1'
-import Exercicio2 from '../../pages/exercicio2'
+import Exercicio2 from '../../pages/Exercicio2'
 import Exercicio3 from '../../pages/Exercicio3'
 import Exercicio4 from '../../pages/Exercicio4'
 

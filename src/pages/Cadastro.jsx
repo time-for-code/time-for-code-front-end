@@ -1,10 +1,10 @@
-import { Link } from '@tanstack/react-router';
+import { Link, useNavigate } from '@tanstack/react-router';
 import '../../public/assets/css/cadastro.css'
 import { useMutation } from '@tanstack/react-query';
 import { cadastro } from '../api/User';
 import { useState } from 'react';
 import { useUser } from '../contexts/UserContext';
-import SuccessPopUp from '../components/successPopUp';
+import Loading from '../components/Loading';
 
 const Cadastro = () => {
     const [nome, setNome] = useState('');
@@ -12,30 +12,38 @@ const Cadastro = () => {
     const [email, setEmail] = useState('');
     const [senha, setSenha] = useState('');
     const { armazenarCadastro } = useUser()
+    const navigate = useNavigate();
 
     const mutation = useMutation({
         mutationKey: ['cadastro'],
         mutationFn: async ({ nome, anoNascimento, email, senha }) => {
-            cadastro(nome, anoNascimento, email, parseInt(senha))
+            return cadastro(nome, parseInt(anoNascimento), email, senha)
         },
         onError: (e) => console.log(e),
         onSuccess: (data) => {
-            armazenarCadastro(data)
+            armazenarCadastro(data.user)
             console.log('Cadastro realizado com sucesso!', data);
+            armazenarLogin(data.name);
+            setTimeout(() => {
+                navigate({ to: "/home", reloadDocument: true });
+            }, 800);
         },
     })
 
     return (
         <>
+            <Link reloadDocument="true" to="/" className="return-button">
+                &#8592; Voltar
+            </Link>
             <img className="wave" src="/img/wave.png" alt="wave" />
             <div className="container">
                 <div className="img">
                     <img src="/img/grupoMascotes.png" alt="grupoMascotes" />
                 </div>
-                {mutation.isSuccess ? (
-                    <SuccessPopUp message="Cadastro realizado com sucesso!" />
-                ) : (
-                    <div className="login-content">
+                <div className="login-content">
+                    {mutation.isPending ? (
+                        <Loading />
+                    ) : (
                         <form action={() => mutation.mutate({ nome, anoNascimento, email, senha })}>
                             <h2 className="title">Cadastro</h2>
                             <div className="input-div one">
@@ -53,6 +61,7 @@ const Cadastro = () => {
                                         minLength="3"
                                         maxLength="50"
                                         title="O nome deve conter apenas letras e espaços"
+                                        pattern="[a-z][A-Z]"
                                     />
                                 </div>
                             </div>
@@ -71,6 +80,7 @@ const Cadastro = () => {
                                         onChange={(e) => setAnoNascimento(e.target.value)}
                                         required
                                         title="Digite uma data válida no formato DD/MM/AAAA"
+                                        pattern='[0-9]'
                                     />
                                 </div>
                             </div>
@@ -89,6 +99,7 @@ const Cadastro = () => {
                                         minLength="5"
                                         maxLength="50"
                                         title="Digite um e-mail válido"
+                                        regex="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
                                     />
                                 </div>
                             </div>
@@ -105,6 +116,7 @@ const Cadastro = () => {
                                         minLength="8"
                                         maxLength="20"
                                         title="A senha deve ter pelo menos 8 caracteres, incluindo letras e números"
+                                        regex="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d@$!%*?&]{8,}$"
                                     />
                                 </div>
                             </div>
@@ -130,11 +142,11 @@ const Cadastro = () => {
                                 <input type="submit" className="btn" value="Cadastrar" />
                             </div>
                             <p className="login-message">
-                                Já tem uma conta?<Link to={'/login'}>Faça login!</Link>
+                                Já tem uma conta?<Link reloadDocument="true" to={'/login'}>Faça login!</Link>
                             </p>
                         </form>
-                    </div>
-                )}
+                    )}
+                </div>
             </div>
         </>
     );

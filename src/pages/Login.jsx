@@ -1,37 +1,44 @@
-import { Link } from "@tanstack/react-router";
+import { Link, useNavigate } from "@tanstack/react-router";
 import "../../public/assets/css/login.css";
 import { useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 import { login } from "../api/User";
 import { useUser } from "../contexts/UserContext";
-import SuccessPopUp from "../components/successPopUp";
+import Loading from "../components/Loading";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
   const { armazenarLogin } = useUser();
+  const navigate = useNavigate();
 
   const mutation = useMutation({
     mutationKey: ["login"],
     mutationFn: async ({ email, senha }) => {
-      login(email, parseInt(senha));
+      return login(email, senha);
     },
     onError: (e) => console.log(e),
     onSuccess: (data) => {
-      armazenarLogin(data);
+      armazenarLogin(data.user);
+      setTimeout(() => {
+        navigate({ to: "/home", reloadDocument: true });
+      }, 800);
       console.log("Cadastro realizado com sucesso!", data);
     },
   });
 
   return (
     <>
+      <Link reloadDocument="true" to="/" className="return-button">
+        &#8592; Voltar
+      </Link>
       <img className="wave" src="/img/wave.png" alt="wave" />
       <div className="container">
         <div className="img">
           <img src="/img/grupoMascotes.png" alt="grupoMascotes" />
         </div>
-        {mutation.isSuccess ? (
-          <SuccessPopUp message="Login realizado com sucesso!" />
+        {mutation.isPending ? (
+          <Loading />
         ) : (
           <div className="login-content">
             <form action={() => mutation.mutate({ email, senha })}>
@@ -79,7 +86,7 @@ const Login = () => {
                 <input type="submit" className="btn" value="Fazer Login" />
               </div>
               <p className="signup-message">
-                Não tem uma conta? <Link to={"/register"}>Crie uma!</Link>
+                Não tem uma conta? <Link reloadDocument="true" to={"/register"}>Crie uma!</Link>
               </p>
             </form>
           </div>
