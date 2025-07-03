@@ -9,7 +9,8 @@
   "scripts": {
     "test": "",
     "lint": "eslint",
-    "dev": "vite"
+    "dev": "vite",
+    "vercel-build": "vite build"
   },
   "type": "module",
   "repository": {
