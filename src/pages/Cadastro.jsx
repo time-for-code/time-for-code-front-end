@@ -61,7 +61,6 @@ const Cadastro = () => {
                                         minLength="3"
                                         maxLength="50"
                                         title="O nome deve conter apenas letras e espaços"
-                                        pattern="[a-z][A-Z]"
                                     />
                                 </div>
                             </div>
@@ -75,12 +74,11 @@ const Cadastro = () => {
                                         type="text"
                                         className="input year-input"
                                         id="birthyear"
-                                        maxLength="10"
+                                        maxLength="4"
                                         value={anoNascimento}
                                         onChange={(e) => setAnoNascimento(e.target.value)}
                                         required
                                         title="Digite uma data válida no formato DD/MM/AAAA"
-                                        pattern='[0-9]'
                                     />
                                 </div>
                             </div>

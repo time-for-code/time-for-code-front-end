@@ -32,7 +32,7 @@ function statisticsComponent() {
             <div className="points-container">
               <div className="points">
                 <li className="pi pi-plus" style={{ color: "#dbc4f8" }}></li>
-                <strong>{todosExer[0][3]} 50 XP</strong>
+                <strong>{todosExer[0][3]} 100 XP</strong>
               </div>
             </div>
             <p className="exercise-title">
@@ -61,7 +61,7 @@ function statisticsComponent() {
             <div className="points-container">
               <div className="points">
                 <li className="pi pi-plus" style={{ color: "#dbc4f8" }}></li>
-                <strong>{todosExer[0][3]} 50 XP</strong>
+                <strong>{todosExer[0][3]} 100 XP</strong>
               </div>
             </div>
             <p className="exercise-title">
@@ -90,7 +90,7 @@ function statisticsComponent() {
             <div className="points-container">
               <div className="points">
                 <li className="pi pi-plus" style={{ color: "#dbc4f8" }}></li>
-                <strong>{todosExer[2][3]} 50 XP</strong>
+                <strong>{todosExer[2][3]} 100 XP</strong>
               </div>
             </div>
             <p className="exercise-title">
@@ -159,7 +159,7 @@ export const Star = ({ width, height, color }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 24 24"
-    fill="#C9B037"
+    fill={color ? color : "#C9B037"}
     width={width ? width : "80px"}
     height={height ? height : "80px"}
     className="star-icon"

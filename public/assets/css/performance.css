@@ -233,10 +233,16 @@
   border-bottom: none;
 }
 
-.ranking-table-inner tr:nth-child(4) td {
+.ranking-table-inner tr.highlight-you td {
   background: #f8dd56;
   color: #333;
   font-weight: bold;
+}
+
+.ranking-table-inner td:nth-child(2) {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 
 /* ===== Botão e Modal de Pontuação ===== */

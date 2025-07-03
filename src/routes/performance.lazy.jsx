@@ -26,16 +26,16 @@ function PerformanceComponent() {
       : defaultTodosExer;
 
   const pillars = [
-    { name: "Decomposição", img: "/img/ana.png", lessons: 8, total: 10, color: "#D5C2E0", },
+    { name: "Decomposição", img: "/img/ana.png", lessons: 0, total: 1, color: "#D5C2E0", },
     {
       name: "Reconhecimento de Padrões",
       img: "/img/lilu.png",
-      lessons: 6,
-      total: 10,
+      lessons: 0,
+      total: 1,
       color: "#F8DD56",
     },
-    { name: "Abstração", img: "/img/soso.png", lessons: 9, total: 10, color: "#78BD77" },
-    { name: "Algoritmos", img: "/img/cadu.png", lessons: 9, total: 10, color: "#C2DAD6" },
+    { name: "Abstração", img: "/img/soso.png", lessons: 0, total: 1, color: "#78BD77" },
+    { name: "Algoritmos", img: "/img/cadu.png", lessons: 0, total: 1, color: "#C2DAD6" },
   ];
 
   const exercises = [
@@ -68,24 +68,25 @@ function PerformanceComponent() {
   const [showModal, setShowModal] = useState(false);
 
   const ranking = [
-    { pos: 1, user: "Ana", score: 950 },
-    { pos: 2, user: "João", score: 900 },
-    { pos: 3, user: "Maria", score: 850 },
+    { pos: 1, user: "Ana Silva", score: 950 },
+    { pos: 2, user: "João Souza", score: 900 },
+    { pos: 3, user: "Maria Oliveira", score: 850 },
     { pos: 4, user: "Você", score: 800 },
-    { pos: 5, user: "Lucas", score: 750 },
-    { pos: 6, user: "Pedro", score: 700 },
-    { pos: 7, user: "Clara", score: 650 },
-    { pos: 8, user: "Rafaela", score: 600 },
-    { pos: 9, user: "Bruno", score: 550 },
-    { pos: 10, user: "Gabriel", score: 500 },
+    { pos: 5, user: "Lucas Ferreira", score: 750 },
+    { pos: 6, user: "Pedro Almeida", score: 700 },
+    { pos: 7, user: "Clara Costa", score: 650 },
+    { pos: 8, user: "Rafaela Lima", score: 600 },
+    { pos: 9, user: "Bruno Martins", score: 550 },
+    { pos: 10, user: "Gabriel Rocha", score: 500 },
   ];
   const userRow = ranking.find(r => r.user === "Você");
   const userPos = userRow ? userRow.pos : 0;
 
   let filledStars = 0;
   if (userPos === 1) filledStars = 3;
-  else if (userPos === 2 || userPos === 3) filledStars = 2;
-  else if (userPos === 4 || userPos === 5) filledStars = 1;
+  else if (userPos === 2) filledStars = 2;
+  else if (userPos === 3) filledStars = 1;
+  else filledStars = 0;
 
   return (
     <>
@@ -163,17 +164,28 @@ function PerformanceComponent() {
           </div>
         </div>
         <div className="content-performance right">
-          <div className="performance-profile" style={{ color: "#C9B037" }}>
-            <div className="profile-circle" style={{ color: "#C9B037" }}>
-              <div className="profile-rank" style={{ color: "#C9B037" }}>{userPos ? `${userPos}º` : "--"}</div>
+          <div
+            className="performance-profile"
+            style={{ color: userPos === 1 ? "#C9B037" : userPos === 2 ? "#B4B4B4" : userPos === 3 ? "#CD7F32" : "#C9B037" }}
+          >
+            <div
+              className="profile-circle"
+              style={{ color: userPos === 1 ? "#C9B037" : userPos === 2 ? "#B4B4B4" : userPos === 3 ? "#CD7F32" : "#C9B037", borderColor: userPos === 1 ? "#C9B037" : userPos === 2 ? "#B4B4B4" : userPos === 3 ? "#CD7F32" : "#C9B037" }}
+            >
+              <div
+                className="profile-rank"
+                style={{ color: userPos === 1 ? "#C9B037" : userPos === 2 ? "#B4B4B4" : userPos === 3 ? "#CD7F32" : "#C9B037" }}
+              >
+                {userPos ? `${userPos}º` : "--"}
+              </div>
             </div>
             <div className="profile-stars">
-              <Star width={"36px"} height={"36px"} />
-              <Star width={"36px"} height={"36px"} />
-              <Star width={"36px"} height={"36px"} />
+              {Array(filledStars).fill().map((index) => (
+                <Star key={index} width={"36px"} height={"36px"} color={userPos === 1 ? "#C9B037" : userPos === 2 ? "#B4B4B4" : "#CD7F32"} />
+              ))}
             </div>
             <div className="profile-note">
-              {userPos && userPos <= 5 ? "Você está no Top 5!" : "Continue para subir no ranking!"}
+              {userPos && userPos <= 5 ? `Você está no Top ${userPos}!` : "Continue para subir no ranking!"}
             </div>
           </div>
           <div className="ranking-table">
@@ -220,7 +232,10 @@ function PerformanceComponent() {
                 </thead>
                 <tbody>
                   {ranking.map((row) => (
-                    <tr key={row.pos}>
+                    <tr
+                      key={row.pos}
+                      className={row.user === "Você" ? "highlight-you" : ""}
+                    >
                       <td>{row.pos}</td>
                       <td>{row.user}</td>
                       <td>{row.score}</td>
