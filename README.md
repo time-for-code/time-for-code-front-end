@@ -39,3 +39,63 @@ O Time for Code está sendo desenvolvido para crianças e adolescentes que estã
 - **Lucas [(zlucasftw)](https://github.com/zlucasftw)**: Desenvolvedor Backend
 - **Layla [(laycsz)](https://github.com/laycsz)**: Desenvolvedora Frontend e Designer UI/UX
 - **Arthur [(ArthurVenturi)](https://github.com/ArthurVenturi)**: Desenvolvedor Frontend
+
+# Time for Code - Frontend
+
+## Configuração de Variáveis de Ambiente
+
+### Desenvolvimento Local
+
+1. Copie o arquivo `env.example` para `.env`:
+```bash
+cp env.example .env
+```
+
+2. Configure a URL da API no arquivo `.env`:
+
+**Para testar API de produção:**
+```bash
+VITE_API_BASE_URL=https://sua-api-producao.com
+```
+
+**Para API local:**
+```bash
+VITE_API_BASE_URL=http://localhost:3000
+```
+
+**Nota:** Em desenvolvimento, o sistema usa proxy do Vite automaticamente para APIs externas.
+
+### Deploy na Vercel
+
+1. Acesse o dashboard da Vercel
+2. Vá para **Settings > Environment Variables**
+3. Adicione a variável:
+   - **Name**: `VITE_API_BASE_URL`
+   - **Value**: `https://sua-api-producao.com`
+   - **Environment**: Production (e Preview se desejar)
+
+### Vantagens da Configuração
+
+✅ **Flexível**: Pode usar qualquer URL da API através de variáveis de ambiente
+✅ **Seguro**: URLs não ficam hardcoded no código
+✅ **Portável**: Funciona em qualquer ambiente (dev, staging, prod)
+✅ **Manutenível**: Fácil de mudar URLs sem alterar código
+
+### Estrutura de Arquivos
+
+- `src/config/api.js` - Configuração centralizada da API
+- `src/api/` - Endpoints da API
+- `src/contexts/` - Contextos do React
+
+## Scripts Disponíveis
+
+- `npm run dev` - Inicia o servidor de desenvolvimento
+- `npm run build` - Gera build de produção
+- `npm run vercel-build` - Build específico para Vercel
+
+## Tecnologias
+
+- React 19
+- Vite
+- TanStack Router
+- TanStack Query

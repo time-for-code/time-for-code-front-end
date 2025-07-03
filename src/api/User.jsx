@@ -1,6 +1,8 @@
+import { getApiUrl, API_CONFIG } from '../config/api.js';
+
 export async function login(email, password) {
   try {
-    const response = await fetch("http://localhost:3000/login", {
+    const response = await fetch(getApiUrl(API_CONFIG.ENDPOINTS.LOGIN), {
       method: "POST",
       credentials: "include",
       headers: {
@@ -24,7 +26,7 @@ export async function login(email, password) {
 
 export async function cadastro(nome, anoNascimento, email, senha) {
   try {
-    const response = await fetch("http://localhost:3000/register", {
+    const response = await fetch(getApiUrl(API_CONFIG.ENDPOINTS.REGISTER), {
       method: "POST",
       credentials: "include",
       headers: {

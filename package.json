@@ -10,6 +10,7 @@
     "test": "",
     "lint": "eslint",
     "dev": "vite",
+    "build": "vite build",
     "vercel-build": "vite build"
   },
   "type": "module",

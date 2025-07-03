@@ -1,6 +1,8 @@
+import { getApiUrl, API_CONFIG } from '../config/api.js';
+
 export const getAllUsers = async () => {
     try {
-        const response = await fetch("http://localhost:3000/users");
+        const response = await fetch(getApiUrl(API_CONFIG.ENDPOINTS.USERS));
         if (!response.ok) {
         throw new Error("Failed to fetch users");
         }
@@ -14,7 +16,7 @@ export const getAllUsers = async () => {
 
 export const postStatisticsData = async (data) => {
     try {
-        const response = await fetch("http://localhost:3000/statistics/:id", {
+        const response = await fetch(getApiUrl(API_CONFIG.ENDPOINTS.STATISTICS + '/:id'), {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

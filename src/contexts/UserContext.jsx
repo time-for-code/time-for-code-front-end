@@ -1,4 +1,5 @@
 import { createContext, useContext, useState, useEffect } from "react"
+import { getApiUrl, API_CONFIG } from '../config/api.js';
 
 //creating a context to store the user data with a default value as null and no function
 const UserContext = createContext({
@@ -15,7 +16,7 @@ export const UserProvider = ({ children }) => {
     useEffect(() => {
         async function fetchUser() {
             try {
-                const res = await fetch("http://localhost:3000/sesion", {
+                const res = await fetch(getApiUrl(API_CONFIG.ENDPOINTS.SESSION), {
                     credentials: "include", // send cookies
                     headers: {
                         "Content-Type": "application/json"
