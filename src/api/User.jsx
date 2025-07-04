@@ -7,11 +7,10 @@ export async function login(email, password) {
     
     const response = await fetch(url, {
       method: "POST",
-      credentials: "include",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ email, password }),
+      body: JSON.stringify({ "email": email, "password": password }),
     });
 
     console.log('Login response status:', response.status);
@@ -43,7 +42,6 @@ export async function cadastro(nome, anoNascimento, email, senha) {
     
     const response = await fetch(url, {
       method: "POST",
-      credentials: "include",
       headers: {
         "Content-Type": "application/json",
       },
