@@ -57,7 +57,7 @@ const Login = () => {
                     required
                     minLength="5"
                     maxLength="50"
-                    pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                    pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$"
                     title="Digite um e-mail válido"
                   />
                 </div>
